@@ -8,17 +8,42 @@ public class Ticket  //make private fields, check constructors
 {
     protected string code = "default";
 
-    public int id;
-    public int price; //{ get { return price; } set { if (value > 0) { price = value; } } }
-    public int type; //{ get { return type; } set { if (value == 1 || value == 2) { type = value; } } }        //1 - single use, 2 - multi use, maybe use bool
-    public int availableUses; //{ get { return availableUses; } set { if (value >= 0) { availableUses = value; } } }
-    public bool isValid;
+    private int id;
+    private int price;
+    private int type;        //1 - single use, 2 - multi use, maybe use bool
+    private int availableUses;
+    private bool isValid;
 
     protected string Code
     {
-        get { return code; }
+        get => code;
         set { code = value; }
     }
+
+    public int Price
+    {
+        get => price;
+        set { if (value > 0) { price = value; } }
+    }
+
+    public int Type
+    {
+        get => type;
+        set { if (value == 1 || value == 2) { type = value; } }
+    }
+
+    public int AvailableUses
+    {
+        get => availableUses;
+        set { if (value >= 0) { availableUses = value; } }
+    }
+
+    public bool IsValid
+    {
+        get => isValid;
+        set { isValid = value; }
+    }
+
     public Ticket()
     {
         Random rng = new Random();
