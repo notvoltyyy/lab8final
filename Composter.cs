@@ -57,11 +57,11 @@ public class Composter
 
     public static string GetTicketType(Ticket ticket)
     {
-        if (ticket.type == 1)
+        if (ticket.Type == 1)
         {
             return "Single use ticket";
         }
-        else if (ticket.type == 2)
+        else if (ticket.Type == 2)
         {
             return "Multi use ticket";
         }
@@ -72,7 +72,7 @@ public class Composter
     }
     public void Check(Ticket ticket)
     {
-        if (ticket.id > 10000 && ticket.id < 10100)
+        if (ticket.Id > 10000 && ticket.Id < 10100)
         {
             Console.WriteLine("Ticket is genuine.");
         }
@@ -90,18 +90,18 @@ public class Composter
     {
         Check(ticket);
 
-        if (ticket.availableUses == 0)
+        if (ticket.AvailableUses == 0)
         {
             Console.WriteLine("You have no available rides left.");
         }
-        else if (ticket.availableUses >= 1)
+        else if (ticket.AvailableUses >= 1)
         {
-            ticket.availableUses--;
-            ticket.isValid = true;
+            ticket.AvailableUses--;
+            ticket.IsValid = true;
             processedTicketCount++;
-            processedTicketId.Add(ticket.id);
+            processedTicketId.Add(ticket.Id);
             //ticket.code = this.code;
-            Console.WriteLine("Your " + GetTicketType(ticket) + "has been validated, uses left: " + ticket.availableUses);
+            Console.WriteLine("Your " + GetTicketType(ticket) + "has been validated, uses left: " + ticket.AvailableUses);
         }
     }
 
@@ -117,7 +117,7 @@ public class Composter
         {
             for (int i = 0; i < size; i++)
             {
-                tickets[i].Input();
+                tickets[i].Buy();
             }
         }
     }
@@ -145,12 +145,12 @@ public class Composter
             //}
             newComposter.workedHours = int.Parse(strings[3]);
 
-            tickets[0].id = int.Parse(strings[4]);
+            tickets[0].Id = int.Parse(strings[4]);
             //tickets[0].code = strings[5];
-            tickets[0].price = int.Parse(strings[5]);
-            tickets[0].type = int.Parse(strings[6]);
-            tickets[0].availableUses = int.Parse(strings[7]);
-            bool.TryParse(strings[8], out tickets[0].isValid);
+            tickets[0].Price = int.Parse(strings[5]);
+            tickets[0].Type = int.Parse(strings[6]);
+            tickets[0].AvailableUses = int.Parse(strings[7]);
+            //bool.TryParse(strings[8], out tickets[0].IsValid);
 
             return newComposter;
         }
@@ -186,12 +186,12 @@ public class Composter
 
                 //foreach (Ticket ticket in tickets)
                 //{
-                writer.WriteLine(tickets[0].id);
+                writer.WriteLine(tickets[0].Id);
                 //writer.WriteLine(tickets[0].code);
-                writer.WriteLine(tickets[0].price);
-                writer.WriteLine(tickets[0].type);
-                writer.WriteLine(tickets[0].availableUses);
-                writer.WriteLine(tickets[0].isValid.ToString());
+                writer.WriteLine(tickets[0].Price);
+                writer.WriteLine(tickets[0].Type);
+                writer.WriteLine(tickets[0].AvailableUses);
+                //writer.WriteLine(tickets[0].IsValid.ToString());
                 //}
 
             }

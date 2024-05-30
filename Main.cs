@@ -59,7 +59,7 @@ class Program
                 case Menu.choice_Valiade:
                     Console.WriteLine("Input number of ticket: ");
                     int t = int.Parse(Console.ReadLine());
-                    composter.Validate(bus.composterList[0].tickets[t]);
+                    composter.Validate(bus.composterList[0].tickets[t-1]);
                     break;
                 case Menu.choice_Check:
                     composter.Check(bus.composterList[1].tickets[0]);
